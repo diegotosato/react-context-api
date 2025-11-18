@@ -10,7 +10,6 @@ export default function NavBar() {
     function toggleState() {
         setBudgetMode(!budgetMode)
     }
-    console.log(budgetMode);
 
     const menu = [
         {

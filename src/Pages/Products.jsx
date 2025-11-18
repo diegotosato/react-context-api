@@ -6,22 +6,26 @@ import 'ldrs/react/Ring.css'
 
 import Data from '../Data'
 
-
-
 import { useContext } from "react"
 import BudgetContext from "../Contexts/BudgetContext"
 
 export default function Products() {
     const [products, setProducts] = useState(Data)
 
-
-    // const [isLoading, setIsLoading] = useState(null)
-
-    // const navigate = useNavigate()
-
-    const { budgetMode, setBudgetMode } = useContext(BudgetContext)
+    const { budgetMode } = useContext(BudgetContext)
 
 
+    const filter = Data.filter(product => product.price <= 30)
+
+    function filterProducts() {
+        if (budgetMode === true) {
+            setProducts(filter)
+        } else {
+            setProducts(Data)
+        }
+    }
+
+    useEffect(filterProducts, [budgetMode])
 
 
     return (
