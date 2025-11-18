@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import NavBar from "./NavBar"
 
 export default function Header() {
 
@@ -24,21 +24,7 @@ export default function Header() {
     return (
         <>
             <header>
-                <nav className="navbar navbar-expand-sm navbar-light bg-primary" data-bs-theme="dark">
-                    <div className="container">
-                        <ul className="navbar-nav me-auto ">
-
-                            {
-                                menu.map(item => (
-                                    <li key={item.id} className="nav-item">
-                                        <NavLink className="nav-link" to={item.link}>{item.text}</NavLink>
-                                    </li>
-                                ))
-                            }
-
-                        </ul>
-                    </div>
-                </nav>
+                <NavBar menu={menu} />
             </header>
         </>
     )
