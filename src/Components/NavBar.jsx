@@ -25,7 +25,7 @@ export default function NavBar({ menu }) {
                     <button className="btn btn-light" onClick={handleClick}>
 
                         {
-                            budgetMode ? 'Modalità Budget' : 'Modalità Standard'
+                            budgetMode ? 'Attiva Modalità Budget' : 'Disattiva Modalità Budget'
                         }
                     </button>
                 </div>
