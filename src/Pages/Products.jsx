@@ -15,6 +15,8 @@ export default function Products() {
     const { budgetMode } = useContext(BudgetContext)
 
 
+
+
     const filter = Data.filter(product => product.price <= 30)
 
     function filterProducts() {
@@ -27,6 +29,7 @@ export default function Products() {
 
     useEffect(filterProducts, [budgetMode])
 
+    // const priced = Data.filter(product => product.price <= maxPrice)
 
     return (
         <>

@@ -1,15 +1,18 @@
 import { NavLink } from "react-router-dom"
 
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import BudgetContext from "../Contexts/BudgetContext"
 
 export default function NavBar() {
 
-    const { budgetMode, setBudgetMode } = useContext(BudgetContext)
+    const { budgetMode, setBudgetMode, number, setNumber } = useContext(BudgetContext)
 
     function toggleState() {
         setBudgetMode(!budgetMode)
     }
+
+
+
 
     const menu = [
         {
@@ -49,6 +52,7 @@ export default function NavBar() {
                             !budgetMode ? 'Attiva Modalità Budget' : 'Disattiva Modalità Budget'
                         }
                     </button>
+                    <input type="number" value={number} onChange={(e) => setNumber(e.target.value)} />
                 </div>
             </nav>
         </>

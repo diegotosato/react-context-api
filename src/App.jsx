@@ -15,6 +15,10 @@ function App() {
 
   const [budgetMode, setBudgetMode] = useState(false)
 
+  const [maxPrice, setMaxPrice] = useState(null)
+  const [number, setNumber] = useState('')
+
+
   // const productsEndpoint = 'https://fakestoreapi.com/products'
 
   // function handleGet() {
@@ -41,7 +45,7 @@ function App() {
 
   return (
     <>
-      <BudgetContext.Provider value={{ budgetMode, setBudgetMode }}>
+      <BudgetContext.Provider value={{ budgetMode, setBudgetMode, maxPrice, setMaxPrice, number, setNumber }}>
 
         <BrowserRouter>
 
