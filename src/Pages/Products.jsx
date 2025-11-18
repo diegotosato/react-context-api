@@ -4,28 +4,25 @@ import { useNavigate } from "react-router-dom"
 import { Ring } from 'ldrs/react'
 import 'ldrs/react/Ring.css'
 
+import Data from '../Data'
+
+
 
 import { useContext } from "react"
 import BudgetContext from "../Contexts/BudgetContext"
 
 export default function Products() {
+    const [products, setProducts] = useState(Data)
 
 
     // const [isLoading, setIsLoading] = useState(null)
 
     // const navigate = useNavigate()
 
-    const { products, budgetMode, setBudgetMode } = useContext(BudgetContext)
+    const { budgetMode, setBudgetMode } = useContext(BudgetContext)
 
 
-    function handleClick(array) {
-        setBudgetMode(!budgetMode)
 
-        if (budgetMode) {
-            const filtered = array.filter(item => item.price <= 30)
-            setProducts(filtered)
-        }
-    }
 
     return (
         <>

@@ -6,16 +6,14 @@ import DefaultLayout from "./Layout/DefaultLayout"
 import FocusProduct from "./Pages/FocusProduct"
 import ErrorPage from "./Pages/ErrorPage"
 
-import axios from "axios"
-import Data from './Data'
-
-import BudgetContext from './Contexts/BudgetContext'
 import { useState, useEffect } from "react"
 
-function App() {
-  const [budgetMode, setBudgetMode] = useState(true)
+import BudgetContext from './Contexts/BudgetContext'
 
-  const [products, setProducts] = useState(Data)
+function App() {
+
+
+  const [budgetMode, setBudgetMode] = useState(false)
 
   // const productsEndpoint = 'https://fakestoreapi.com/products'
 
@@ -41,11 +39,9 @@ function App() {
 
   // useEffect(handleGet, [])
 
-
-
   return (
     <>
-      <BudgetContext.Provider value={{ products, budgetMode, setBudgetMode }}>
+      <BudgetContext.Provider value={{ budgetMode, setBudgetMode }}>
 
         <BrowserRouter>
 
@@ -54,8 +50,10 @@ function App() {
             <Route element={<DefaultLayout />}>
 
               <Route path="/" element={<HomePage />} />
+
               <Route path="/products" element={<Products />} />
               <Route path="/products/:id" element={<FocusProduct />} />
+
               <Route path="/about_us" element={<AboutUs />} />
 
             </Route>

@@ -3,9 +3,32 @@ import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import BudgetContext from "../Contexts/BudgetContext"
 
-export default function NavBar({ menu }) {
+export default function NavBar() {
 
-    const { budgetMode, handleClick } = useContext(BudgetContext)
+    const { budgetMode, setBudgetMode } = useContext(BudgetContext)
+
+    function toggleState() {
+        setBudgetMode(!budgetMode)
+    }
+    console.log(budgetMode);
+
+    const menu = [
+        {
+            id: 1,
+            link: '/',
+            text: 'Home Page'
+        },
+        {
+            id: 2,
+            link: '/products',
+            text: 'Products'
+        },
+        {
+            id: 3,
+            link: '/about_us',
+            text: 'About Us'
+        }
+    ]
 
     return (
         <>
@@ -22,10 +45,9 @@ export default function NavBar({ menu }) {
                         }
 
                     </ul>
-                    <button className="btn btn-light" onClick={handleClick}>
-
+                    <button className="btn btn-light" onClick={toggleState}>
                         {
-                            budgetMode ? 'Attiva Modalità Budget' : 'Disattiva Modalità Budget'
+                            !budgetMode ? 'Attiva Modalità Budget' : 'Disattiva Modalità Budget'
                         }
                     </button>
                 </div>
