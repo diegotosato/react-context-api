@@ -12,11 +12,14 @@ import BudgetContext from "../Contexts/BudgetContext"
 export default function Products() {
     const [products, setProducts] = useState(Data)
 
-    const { budgetMode } = useContext(BudgetContext)
+    const { budgetMode, maxPrice, setMaxPrice, number } = useContext(BudgetContext)
+
+    //maxPrice è una stringa, quindi lo converto subito in numero
+    useEffect(() => { setMaxPrice(Number(number)) }, [number])
 
 
 
-
+    //filtraggio con bottone
     const filter = Data.filter(product => product.price <= 30)
 
     function filterProducts() {
@@ -29,7 +32,24 @@ export default function Products() {
 
     useEffect(filterProducts, [budgetMode])
 
-    // const priced = Data.filter(product => product.price <= maxPrice)
+
+    //filtraggio con input
+
+    //creo un array partendo dai dati originali, estraggo il singolo dato e confronto il suo prezzo con il mio inserito
+    const priced = Data.filter(product => (
+        product.price <= Number(maxPrice)
+    ))
+
+    function filterMaxPrice() {
+        if (maxPrice === null || maxPrice === 0 || Number.isNaN(maxPrice)) {
+            setProducts(Data)
+        } else {
+            setProducts(priced)
+        }
+    }
+
+    useEffect(filterMaxPrice, [maxPrice])
+
 
     return (
         <>

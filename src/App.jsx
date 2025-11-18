@@ -16,7 +16,7 @@ function App() {
   const [budgetMode, setBudgetMode] = useState(false)
 
   const [maxPrice, setMaxPrice] = useState(null)
-  const [number, setNumber] = useState('')
+  const [number, setNumber] = useState(undefined)
 
 
   // const productsEndpoint = 'https://fakestoreapi.com/products'

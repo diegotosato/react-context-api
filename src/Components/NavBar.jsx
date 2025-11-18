@@ -52,7 +52,7 @@ export default function NavBar() {
                             !budgetMode ? 'Attiva Modalità Budget' : 'Disattiva Modalità Budget'
                         }
                     </button>
-                    <input type="number" value={number} onChange={(e) => setNumber(e.target.value)} />
+                    <input type="number" onChange={(e) => setNumber(e.target.value)} />
                 </div>
             </nav>
         </>
