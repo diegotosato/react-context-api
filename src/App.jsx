@@ -11,11 +11,17 @@ import { useState } from "react"
 
 function App() {
 
-  const [budgetMode, setBudgetMode] = useState(null)
+  const [budgetMode, setBudgetMode] = useState(true)
+
+  function handleClick() {
+    setBudgetMode(!budgetMode)
+    console.log(budgetMode);
+
+  }
 
   return (
     <>
-      <BudgetContext.Provider value={{}}>
+      <BudgetContext.Provider value={{ budgetMode, handleClick }}>
 
         <BrowserRouter>
 

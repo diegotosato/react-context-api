@@ -1,6 +1,12 @@
 import { NavLink } from "react-router-dom"
 
+import { useContext } from "react"
+import BudgetContext from "../Contexts/BudgetContext"
+
 export default function NavBar({ menu }) {
+
+    const { budgetMode, handleClick } = useContext(BudgetContext)
+
     return (
         <>
             <nav className="navbar navbar-expand-sm navbar-light bg-primary" data-bs-theme="dark">
@@ -16,6 +22,12 @@ export default function NavBar({ menu }) {
                         }
 
                     </ul>
+                    <button className="btn btn-light" onClick={handleClick}>
+
+                        {
+                            budgetMode ? 'Modalità Budget' : 'Modalità Standard'
+                        }
+                    </button>
                 </div>
             </nav>
         </>
