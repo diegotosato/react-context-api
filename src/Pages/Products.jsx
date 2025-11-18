@@ -1,44 +1,31 @@
-import axios from "axios"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import Card from '../Components/Card'
 import { useNavigate } from "react-router-dom"
 import { Ring } from 'ldrs/react'
 import 'ldrs/react/Ring.css'
-import Data from '../Data'
+
+
+import { useContext } from "react"
+import BudgetContext from "../Contexts/BudgetContext"
 
 export default function Products() {
-    const productsEndpoint = 'https://fakestoreapi.com/products'
 
-    const [products, setProducts] = useState([])
-    console.log(products);
 
-    const [isLoading, setIsLoading] = useState(null)
+    // const [isLoading, setIsLoading] = useState(null)
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
-    function handleGet() {
-        axios.get(productsEndpoint)
-            .then(res => {
-                setIsLoading(true)
-                setProducts(res.data)
-                console.log(res.data);
+    const { products, budgetMode, setBudgetMode } = useContext(BudgetContext)
 
-            })
-            .catch(err => {
-                navigate('/error_page')
 
-                if (err.status === 404) {
-                    navigate('/error_page')
+    function handleClick(array) {
+        setBudgetMode(!budgetMode)
 
-                }
-            })
-            .finally(onfinally => {
-                setIsLoading(false)
-            })
+        if (budgetMode) {
+            const filtered = array.filter(item => item.price <= 30)
+            setProducts(filtered)
+        }
     }
-
-    useEffect(handleGet, [])
-
 
     return (
         <>
@@ -46,12 +33,12 @@ export default function Products() {
 
             <div className="container">
 
-                {
+                {/* {
                     (isLoading === true) &&
                     <div className="d-flex justify-content-center vh-100 mt-5">
                         <Ring size="40" stroke="5" bgOpacity="0" speed="2" color="black" className="mx-auto" />
                     </div>
-                }
+                } */}
 
                 <h1 className="my-4">Prodotti</h1>
 

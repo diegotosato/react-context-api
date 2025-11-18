@@ -6,22 +6,46 @@ import DefaultLayout from "./Layout/DefaultLayout"
 import FocusProduct from "./Pages/FocusProduct"
 import ErrorPage from "./Pages/ErrorPage"
 
+import axios from "axios"
+import Data from './Data'
+
 import BudgetContext from './Contexts/BudgetContext'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App() {
-
   const [budgetMode, setBudgetMode] = useState(true)
 
-  function handleClick() {
-    setBudgetMode(!budgetMode)
-    console.log(budgetMode);
+  const [products, setProducts] = useState(Data)
 
-  }
+  // const productsEndpoint = 'https://fakestoreapi.com/products'
+
+  // function handleGet() {
+  //   axios.get(productsEndpoint)
+  //     .then(res => {
+  //       setIsLoading(true)
+  //       setProducts(res.data)
+
+  //     })
+  //     .catch(err => {
+  //       navigate('/error_page')
+
+  //       if (err.status === 404) {
+  //         navigate('/error_page')
+
+  //       }
+  //     })
+  //     .finally(onfinally => {
+  //       setIsLoading(false)
+  //     })
+  // }
+
+  // useEffect(handleGet, [])
+
+
 
   return (
     <>
-      <BudgetContext.Provider value={{ budgetMode, handleClick }}>
+      <BudgetContext.Provider value={{ products, budgetMode, setBudgetMode }}>
 
         <BrowserRouter>
 
