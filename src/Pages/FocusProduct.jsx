@@ -4,21 +4,16 @@ import axios from "axios"
 import { Ring } from 'ldrs/react'
 import 'ldrs/react/Ring.css'
 
-import { useContext } from "react"
-import BudgetContext from "../Contexts/BudgetContext"
+import Data from "../Data"
+
 
 export default function FocusProduct() {
 
-    // let { id } = useParams()
 
     // const navigate = useNavigate()
 
     // const [product, setProduct] = useState(products)
     // const [isLoading, setIsLoading] = useState(true)
-
-    // const back = Number(id) - 1
-    // const forward = Number(id) + 1
-
 
 
     // function handleGet() {
@@ -45,16 +40,21 @@ export default function FocusProduct() {
 
     // useEffect(handleGet, [id])
 
-    const { budgetMode, handleClick, products } = useContext(BudgetContext)
-    console.log(products);
+    const { id } = useParams()
 
-    const [product, setProduct] = useState(products)
+    console.log(Data.length);
+
+    const product = Data.find(item => item.id === Number(id))
+
+    const back = Number(id) > 1 ? Number(id) - 1 : id
+    const forward = Number(id) < 1 ? Number(id) + 1 : id
+
 
     return (
         <>
             <div className="container">
-
-                {/* {
+                {/* 
+                {
                     (isLoading === true) &&
                     <div className="d-flex justify-content-center vh-100">
                         <Ring size="40" stroke="5" bgOpacity="0" speed="2" color="black" className="mx-auto" />
@@ -74,11 +74,11 @@ export default function FocusProduct() {
                                 <h6 className="card-subtitle mb-2 text-body-secondary fs-3">{product.category}</h6>
                                 <p className="card-text">{product.description}</p>
                                 <h5 className="card-title text-success fs-3">€ {product.price}</h5>
-                                {/* <p className="card-text">Rating: <span className="text-warning fw-bold">{product.rating.rate}</span></p> */}
-                                {/* <p className="card-text">Count: <span className="text-warning fw-bold">{product.rating.count}</span></p> */}
+                                <p className="card-text">Rating: <span className="text-warning fw-bold">{product.rating.rate}</span></p>
+                                <p className="card-text">Count: <span className="text-warning fw-bold">{product.rating.count}</span></p>
                                 <Link to='/products' className="btn btn-primary w-50">Torna alla pagina dei prodotti</Link>
-                                {/* <Link to={`/products/${back}`} className="btn btn-dark w-50 my-3">Prodotto precedente</Link> */}
-                                {/* <Link to={`/products/${forward}`} className="btn btn-dark w-50">Prodotto successivo</Link> */}
+                                <Link to={`/products/${back}`} className="btn btn-dark w-50 my-3">Prodotto precedente</Link>
+                                <Link to={`/products/${forward}`} className="btn btn-dark w-50">Prodotto successivo</Link>
                             </div>
                         </div>
                     </div>
