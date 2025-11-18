@@ -40,14 +40,14 @@ export default function FocusProduct() {
 
     // useEffect(handleGet, [id])
 
-    const { id } = useParams()
+    let { id } = useParams()
 
     console.log(Data.length);
 
     const product = Data.find(item => item.id === Number(id))
 
-    const back = Number(id) > 1 ? Number(id) - 1 : id
-    const forward = Number(id) < Data.length ? Number(id) + 1 : id
+    const back = Number(id) > 1 ? Number(id) - 1 : id = Data.length
+    const forward = Number(id) < Data.length ? Number(id) + 1 : id = 1
 
 
     return (
