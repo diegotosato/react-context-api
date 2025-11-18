@@ -4,12 +4,15 @@ import Card from '../Components/Card'
 import { useNavigate } from "react-router-dom"
 import { Ring } from 'ldrs/react'
 import 'ldrs/react/Ring.css'
+import Data from '../Data'
 
 export default function Products() {
     const productsEndpoint = 'https://fakestoreapi.com/products'
 
     const [products, setProducts] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    console.log(products);
+
+    const [isLoading, setIsLoading] = useState(null)
 
     const navigate = useNavigate()
 
