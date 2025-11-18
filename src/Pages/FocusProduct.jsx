@@ -10,7 +10,6 @@ import Data from "../Data"
 export default function FocusProduct() {
 
 
-    // const navigate = useNavigate()
 
     // const [product, setProduct] = useState(products)
     // const [isLoading, setIsLoading] = useState(true)
@@ -40,14 +39,23 @@ export default function FocusProduct() {
 
     // useEffect(handleGet, [id])
 
-    let { id } = useParams()
 
-    console.log(Data.length);
+    const navigate = useNavigate()
+
+    let { id } = useParams()
+    console.log(id);
+
 
     const product = Data.find(item => item.id === Number(id))
 
-    const back = Number(id) > 1 ? Number(id) - 1 : id = Data.length
-    const forward = Number(id) < Data.length ? Number(id) + 1 : id = 1
+    const back = Number(id) - 1
+    const forward = Number(id) + 1
+
+    if (Number(id) < 1) {
+        navigate(`/products/${Data.length}`)
+    } else if (Number(id) > Data.length) {
+        navigate(`/products/1`)
+    }
 
 
     return (
