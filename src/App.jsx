@@ -6,27 +6,36 @@ import DefaultLayout from "./Layout/DefaultLayout"
 import FocusProduct from "./Pages/FocusProduct"
 import ErrorPage from "./Pages/ErrorPage"
 
+import BudgetContext from './Contexts/BudgetContext'
+import { useState } from "react"
+
 function App() {
+
+  const [budgetMode, setBudgetMode] = useState(null)
 
   return (
     <>
-      <BrowserRouter>
+      <BudgetContext.Provider value={{}}>
 
-        <Routes>
+        <BrowserRouter>
 
-          <Route element={<DefaultLayout />}>
+          <Routes>
 
-            <Route path="/" element={<HomePage />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:id" element={<FocusProduct />} />
-            <Route path="/about_us" element={<AboutUs />} />
+            <Route element={<DefaultLayout />}>
 
-          </Route>
-          <Route path="/error_page" element={<ErrorPage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:id" element={<FocusProduct />} />
+              <Route path="/about_us" element={<AboutUs />} />
 
-        </Routes>
+            </Route>
+            <Route path="/error_page" element={<ErrorPage />} />
 
-      </BrowserRouter>
+          </Routes>
+
+        </BrowserRouter>
+
+      </BudgetContext.Provider>
     </>
   )
 }
