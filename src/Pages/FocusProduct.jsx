@@ -47,7 +47,7 @@ export default function FocusProduct() {
     const product = Data.find(item => item.id === Number(id))
 
     const back = Number(id) > 1 ? Number(id) - 1 : id
-    const forward = Number(id) < 1 ? Number(id) + 1 : id
+    const forward = Number(id) < Data.length ? Number(id) + 1 : id
 
 
     return (
